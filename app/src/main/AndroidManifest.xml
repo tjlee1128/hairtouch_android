@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="kr.co.hairtouch.hairtouch_android">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -27,6 +27,10 @@
         <activity
             android:name=".activity.ShopDetailActivity"
             android:label="@string/title_activity_shop_detail"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.DesignerActivity"
+            android:label="@string/title_activity_designer"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
