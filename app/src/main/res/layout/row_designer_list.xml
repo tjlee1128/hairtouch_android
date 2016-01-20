@@ -25,7 +25,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_below="@+id/row_designer_list_iv_profile"
                 android:text="평점"
-                android:textSize="14dp"/>
+                android:textSize="14sp"/>
             <TextView
                 android:id="@+id/row_designer_list_tv_review"
                 android:layout_width="wrap_content"
@@ -33,7 +33,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_below="@+id/row_designer_list_tv_grade"
                 android:text="리뷰"
-                android:textSize="14dp"/>
+                android:textSize="14sp"/>
         </RelativeLayout>
 
         <!-- RIGHT -->

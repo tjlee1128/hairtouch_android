@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="매장조회"
-            android:textSize="24dp"
+            android:textSize="24sp"
             android:textColor="#FFFFFF"/>
     </RelativeLayout>
 
