@@ -20,6 +20,7 @@ import kr.co.hairtouch.hairtouch_android.adapter.ReviewListAdapter;
 import kr.co.hairtouch.hairtouch_android.apimanager.ServiceGenerator;
 import kr.co.hairtouch.hairtouch_android.apimanager.ShopService;
 import kr.co.hairtouch.hairtouch_android.model.Shop;
+import kr.co.hairtouch.hairtouch_android.recyclerview.DividerItemDecoration;
 import retrofit.Call;
 import retrofit.Callback;
 import retrofit.Response;

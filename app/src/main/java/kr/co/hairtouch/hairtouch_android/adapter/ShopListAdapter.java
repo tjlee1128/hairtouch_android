@@ -20,14 +20,14 @@ import kr.co.hairtouch.hairtouch_android.model.Shop;
 /**
  * Created by leetaejun on 2016. 1. 19..
  */
-public class StoreListAdapter extends BaseAdapter {
+public class ShopListAdapter extends BaseAdapter {
 
     private LayoutInflater mInflater;
     private List<Shop> shopList;
 
-    public StoreListAdapter(Context context, List<Shop> list) {
+    public ShopListAdapter(Context context, List<Shop> shopList) {
         mInflater = LayoutInflater.from(context);
-        shopList = list;
+        this.shopList = shopList;
     }
     @Override
     public int getCount() {

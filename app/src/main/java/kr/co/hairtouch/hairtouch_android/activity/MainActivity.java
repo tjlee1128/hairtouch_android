@@ -17,12 +17,12 @@ public class MainActivity extends AppCompatActivity {
         Intent intent;
         switch (v.getId()) {
             case R.id.activity_main_btn_store:
-                Toast.makeText(MainActivity.this, "store", Toast.LENGTH_LONG).show();
                 intent = new Intent(MainActivity.this, ShopActivity.class);
                 startActivity(intent);
                 break;
             case R.id.activity_main_btn_designer:
-                Toast.makeText(MainActivity.this, "designer", Toast.LENGTH_LONG).show();
+                intent = new Intent(MainActivity.this, DesignerActivity.class);
+                startActivity(intent);
                 break;
             case R.id.activity_main_btn_hair:
                 Toast.makeText(MainActivity.this, "hair", Toast.LENGTH_LONG).show();

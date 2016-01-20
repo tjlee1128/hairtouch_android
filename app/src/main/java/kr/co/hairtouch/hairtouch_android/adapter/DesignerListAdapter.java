@@ -51,6 +51,7 @@ public class DesignerListAdapter extends RecyclerView.Adapter<DesignerListAdapte
     }
 
     public final static class ViewHolder extends RecyclerView.ViewHolder {
+
         @Bind(R.id.row_designer_list_iv_profile)    ImageView mMainImageView;
         @Bind(R.id.row_designer_list_tv_grade)      TextView mGradeTextView;
         @Bind(R.id.row_designer_list_tv_review)     TextView mReviewTextView;

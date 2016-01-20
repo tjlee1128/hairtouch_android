@@ -13,7 +13,7 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import kr.co.hairtouch.hairtouch_android.R;
-import kr.co.hairtouch.hairtouch_android.adapter.StoreListAdapter;
+import kr.co.hairtouch.hairtouch_android.adapter.ShopListAdapter;
 import kr.co.hairtouch.hairtouch_android.apimanager.ServiceGenerator;
 import kr.co.hairtouch.hairtouch_android.apimanager.ShopService;
 import kr.co.hairtouch.hairtouch_android.model.Shop;
@@ -24,7 +24,7 @@ import retrofit.Retrofit;
 
 public class ShopActivity extends AppCompatActivity {
 
-    @Bind(R.id.activity_shop_lv) ListView storeListView;
+    @Bind(R.id.activity_shop_lv) ListView shopListView;
     private List<Shop> shopList;
 
     @Override
@@ -54,8 +54,8 @@ public class ShopActivity extends AppCompatActivity {
         public void onResponse(Response<List<Shop>> response, Retrofit retrofit) {
             shopList = response.body();
 
-            storeListView.setAdapter(new StoreListAdapter(ShopActivity.this, shopList));
-            storeListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            shopListView.setAdapter(new ShopListAdapter(ShopActivity.this, shopList));
+            shopListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     Intent intent = new Intent(ShopActivity.this, ShopDetailActivity.class);
