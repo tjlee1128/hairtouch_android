@@ -105,8 +105,10 @@ public class ShopDetailActivity extends AppCompatActivity {
 
             designerRecyclerView.setLayoutManager(new LinearLayoutManager(ShopDetailActivity.this));
             designerRecyclerView.setAdapter(new DesignerListAdapter(ShopDetailActivity.this, shop.getDesigners()));
+            designerRecyclerView.addItemDecoration(new DividerItemDecoration(ShopDetailActivity.this));
             reviewRecyclerView.setLayoutManager(new LinearLayoutManager(ShopDetailActivity.this));
             reviewRecyclerView.setAdapter(new ReviewListAdapter(ShopDetailActivity.this, shop.getReviews()));
+            reviewRecyclerView.addItemDecoration(new DividerItemDecoration(ShopDetailActivity.this));
         }
 
         @Override
