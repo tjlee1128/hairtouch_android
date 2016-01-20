@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.MainActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <RelativeLayout
+                android:id="@+id/activity_main_rl_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_main_logo"/>
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/activity_main_line1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="12dp"
+                android:layout_below="@id/activity_main_rl_header"
+                android:background="#9B9B9B" />
+
+            <RelativeLayout
+                android:id="@+id/activity_main_rl_region"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_below="@+id/activity_main_line1">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="18dp"
+                    android:text="지역설정하기!"
+                    android:textSize="24dp"
+                    android:textColor="#000000"/>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="18dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_arrow_right"/>
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/activity_main_line2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/activity_main_rl_region"
+                android:background="#9B9B9B" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/activity_main_line2"
+                android:padding="60dp"
+                android:gravity="center">
+                <Button
+                    android:id="@+id/activity_main_btn_store"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:text="매 장"/>
+                <Button
+                    android:id="@+id/activity_main_btn_designer"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_toRightOf="@+id/activity_main_btn_store"
+                    android:text="디자이너"/>
+                <Button
+                    android:id="@+id/activity_main_btn_hair"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_below="@+id/activity_main_btn_store"
+                    android:text="시 술"/>
+                <Button
+                    android:id="@+id/activity_main_btn_mypage"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_below="@+id/activity_main_btn_designer"
+                    android:layout_toRightOf="@+id/activity_main_btn_hair"
+                    android:text="마이페이지"/>
+            </RelativeLayout>
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>
