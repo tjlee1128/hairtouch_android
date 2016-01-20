@@ -11,6 +11,8 @@ import android.widget.TextView;
 import java.text.DecimalFormat;
 import java.util.List;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
 import kr.co.hairtouch.hairtouch_android.R;
 import kr.co.hairtouch.hairtouch_android.model.Designer;
 
@@ -49,18 +51,14 @@ public class DesignerListAdapter extends RecyclerView.Adapter<DesignerListAdapte
     }
 
     public final static class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView mMainImageView;
-        TextView mGradeTextView;
-        TextView mReviewTextView;
-        TextView mNameTextView;
-        TextView mPhoneTextView;
+        @Bind(R.id.row_designer_list_iv_profile)    ImageView mMainImageView;
+        @Bind(R.id.row_designer_list_tv_grade)      TextView mGradeTextView;
+        @Bind(R.id.row_designer_list_tv_review)     TextView mReviewTextView;
+        @Bind(R.id.row_designer_list_tv_name)       TextView mNameTextView;
+        @Bind(R.id.row_designer_list_tv_phone)      TextView mPhoneTextView;
         public ViewHolder(View itemView) {
             super(itemView);
-            mMainImageView  = (ImageView) itemView.findViewById(R.id.row_designer_list_iv_profile);
-            mGradeTextView  = (TextView) itemView.findViewById(R.id.row_designer_list_tv_grade);
-            mReviewTextView = (TextView) itemView.findViewById(R.id.row_designer_list_tv_review);
-            mNameTextView   = (TextView) itemView.findViewById(R.id.row_designer_list_tv_name);
-            mPhoneTextView  = (TextView) itemView.findViewById(R.id.row_designer_list_tv_phone);
+            ButterKnife.bind(this, itemView);
         }
     }
 }

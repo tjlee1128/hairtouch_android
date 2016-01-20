@@ -11,6 +11,8 @@ import android.widget.TextView;
 import java.text.DecimalFormat;
 import java.util.List;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
 import kr.co.hairtouch.hairtouch_android.R;
 import kr.co.hairtouch.hairtouch_android.model.Review;
 
@@ -48,16 +50,13 @@ public class ReviewListAdapter extends RecyclerView.Adapter<ReviewListAdapter.Vi
     }
 
     public final static class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView mMainImageView;
-        TextView mGradeTextView;
-        TextView mNameTextView;
-        TextView mDetailTextView;
+        @Bind(R.id.row_review_list_iv_profile)      ImageView mMainImageView;
+        @Bind(R.id.row_review_list_tv_grade)        TextView mGradeTextView;
+        @Bind(R.id.row_review_list_tv_name)         TextView mNameTextView;
+        @Bind(R.id.row_review_list_tv_detail)       TextView mDetailTextView;
         public ViewHolder(View itemView) {
             super(itemView);
-            mMainImageView  = (ImageView) itemView.findViewById(R.id.row_review_list_iv_profile);
-            mGradeTextView  = (TextView) itemView.findViewById(R.id.row_review_list_tv_grade);
-            mNameTextView   = (TextView) itemView.findViewById(R.id.row_review_list_tv_name);
-            mDetailTextView  = (TextView) itemView.findViewById(R.id.row_review_list_tv_detail);
+            ButterKnife.bind(this, itemView);
         }
     }
 }
