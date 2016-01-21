@@ -10,14 +10,25 @@
         android:id="@+id/activity_shop_rl_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="#3F51B5">
+        android:background="?attr/colorPrimary">
+        <RelativeLayout
+            android:id="@+id/activity_shop_rl_back"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:gravity="center">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="fitCenter"
+                android:background="@drawable/ic_keyboard_backspace_white_36dp"/>
+        </RelativeLayout>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="매장조회"
             android:textSize="24sp"
-            android:textColor="#FFFFFF"/>
+            android:textColor="@color/colorWhite"/>
     </RelativeLayout>
 
     <RelativeLayout
@@ -28,7 +39,7 @@
             android:id="@+id/activity_shop_lv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#FFFFFF">
+            android:background="@color/colorWhite">
         </ListView>
     </RelativeLayout>
 

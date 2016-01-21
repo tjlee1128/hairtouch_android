@@ -3,7 +3,7 @@ package kr.co.hairtouch.hairtouch_android.model;
 /**
  * Created by leetaejun on 2016. 1. 20..
  */
-public class MemberInfo {
+public class ReviewMember {
     int member_id;
     String member_name;
 

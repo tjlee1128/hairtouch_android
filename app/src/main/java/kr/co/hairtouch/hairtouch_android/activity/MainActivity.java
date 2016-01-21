@@ -20,16 +20,20 @@ public class MainActivity extends AppCompatActivity {
                 intent = new Intent(MainActivity.this, ShopActivity.class);
                 startActivity(intent);
                 break;
+
             case R.id.activity_main_btn_designer:
                 intent = new Intent(MainActivity.this, DesignerActivity.class);
                 startActivity(intent);
                 break;
+
             case R.id.activity_main_btn_hair:
                 Toast.makeText(MainActivity.this, "hair", Toast.LENGTH_LONG).show();
                 break;
+
             case R.id.activity_main_btn_mypage:
                 Toast.makeText(MainActivity.this, "mypage", Toast.LENGTH_LONG).show();
                 break;
+
             default:
                 break;
         }

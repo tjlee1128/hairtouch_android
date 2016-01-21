@@ -110,11 +110,11 @@
                     android:gravity="center">
                     <ImageView
                         android:id="@+id/backgroundImageView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:alpha="0.6"
                         android:fitsSystemWindows="true"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/ic_main_logo"/>
+                        android:scaleType="fitCenter"/>
                 </RelativeLayout>
             </RelativeLayout>
 

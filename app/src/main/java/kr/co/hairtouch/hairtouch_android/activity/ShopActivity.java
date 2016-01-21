@@ -17,6 +17,7 @@ import kr.co.hairtouch.hairtouch_android.adapter.ShopListAdapter;
 import kr.co.hairtouch.hairtouch_android.apimanager.ServiceGenerator;
 import kr.co.hairtouch.hairtouch_android.apimanager.ShopService;
 import kr.co.hairtouch.hairtouch_android.model.Shop;
+import kr.co.hairtouch.hairtouch_android.util.Constants;
 import retrofit.Call;
 import retrofit.Callback;
 import retrofit.Response;
@@ -25,7 +26,7 @@ import retrofit.Retrofit;
 public class ShopActivity extends AppCompatActivity {
 
     @Bind(R.id.activity_shop_lv) ListView shopListView;
-    private List<Shop> shopList;
+    private List<Shop> mShopList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +40,7 @@ public class ShopActivity extends AppCompatActivity {
         Call<List<Shop>> call = shopService.loadShops();
 
         // asynchronous call
-        call.enqueue(callback);
+        call.enqueue(mCallback);
     }
 
     @Override
@@ -49,17 +50,17 @@ public class ShopActivity extends AppCompatActivity {
     }
 
     // create interface
-    Callback<List<Shop>> callback = new Callback<List<Shop>>() {
+    private Callback<List<Shop>> mCallback = new Callback<List<Shop>>() {
         @Override
         public void onResponse(Response<List<Shop>> response, Retrofit retrofit) {
-            shopList = response.body();
+            mShopList = response.body();
 
-            shopListView.setAdapter(new ShopListAdapter(ShopActivity.this, shopList));
+            shopListView.setAdapter(new ShopListAdapter(ShopActivity.this, mShopList));
             shopListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     Intent intent = new Intent(ShopActivity.this, ShopDetailActivity.class);
-                    intent.putExtra("id", shopList.get(position).getId());
+                    intent.putExtra(Constants.EXTRA_SHOP_ID, mShopList.get(position).getId());
                     startActivity(intent);
                 }
             });

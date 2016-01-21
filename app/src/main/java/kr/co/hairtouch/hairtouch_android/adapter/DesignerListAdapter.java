@@ -19,26 +19,26 @@ import kr.co.hairtouch.hairtouch_android.model.Designer;
 /**
  * Created by leetaejun on 2016. 1. 20..
  */
-public class DesignerListAdapter extends RecyclerView.Adapter<DesignerListAdapter.ViewHolder> {
+public class DesignerListAdapter extends RecyclerView.Adapter<DesignerListAdapter.sDesignerViewHolder> {
 
     private LayoutInflater mInflater;
-    private List<Designer> designerList;
+    private List<Designer> mDesignerList;
 
     public DesignerListAdapter(Context context, List<Designer> designerList) {
         if (designerList == null) throw  new IllegalArgumentException("Data must not be null");
         mInflater = LayoutInflater.from(context);
-        this.designerList = designerList;
+        mDesignerList = designerList;
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public sDesignerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = mInflater.inflate(R.layout.row_designer_list, parent, false);
-        return new ViewHolder(view);
+        return new sDesignerViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        Designer designer = designerList.get(position);
+    public void onBindViewHolder(sDesignerViewHolder holder, int position) {
+        Designer designer = mDesignerList.get(position);
         holder.mGradeTextView.setText(new DecimalFormat("#.##").format(designer.getReview().getGrade()));
         holder.mReviewTextView.setText("" + designer.getReview().getCount());
         holder.mNameTextView.setText(designer.getName());
@@ -47,17 +47,17 @@ public class DesignerListAdapter extends RecyclerView.Adapter<DesignerListAdapte
 
     @Override
     public int getItemCount() {
-        return designerList.size();
+        return mDesignerList.size();
     }
 
-    public final static class ViewHolder extends RecyclerView.ViewHolder {
+    public static class sDesignerViewHolder extends RecyclerView.ViewHolder {
 
         @Bind(R.id.row_designer_list_iv_profile)    ImageView mMainImageView;
         @Bind(R.id.row_designer_list_tv_grade)      TextView mGradeTextView;
         @Bind(R.id.row_designer_list_tv_review)     TextView mReviewTextView;
         @Bind(R.id.row_designer_list_tv_name)       TextView mNameTextView;
         @Bind(R.id.row_designer_list_tv_phone)      TextView mPhoneTextView;
-        public ViewHolder(View itemView) {
+        public sDesignerViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }

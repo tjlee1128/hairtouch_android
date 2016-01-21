@@ -1,7 +1,6 @@
 package kr.co.hairtouch.hairtouch_android.adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,21 +26,21 @@ public class ShopListAdapter extends BaseAdapter {
 
     private Context mContext;
     private LayoutInflater mInflater;
-    private List<Shop> shopList;
+    private List<Shop> mShopList;
 
     public ShopListAdapter(Context context, List<Shop> shopList) {
-        this.mContext = context;
+        mContext = context;
         mInflater = LayoutInflater.from(context);
-        this.shopList = shopList;
+        mShopList = shopList;
     }
     @Override
     public int getCount() {
-        return shopList.size();
+        return mShopList.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return shopList.get(position);
+        return mShopList.get(position);
     }
 
     @Override
@@ -51,36 +50,36 @@ public class ShopListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder holder;
+        sShopViewHolder holder;
 
         if (convertView != null) {
-            holder = (ViewHolder) convertView.getTag();
+            holder = (sShopViewHolder) convertView.getTag();
         } else {
             convertView = mInflater.inflate(R.layout.row_shop_list, parent, false);
-            holder = new ViewHolder(convertView);
+            holder = new sShopViewHolder(convertView);
             convertView.setTag(holder);
         }
 
         Picasso.with(mContext)
-                .load(Constants.API_SERVER_BASE_URL + shopList.get(position).getImage())
-                .resize(50, 50)
+                .load(Constants.API_SERVER_BASE_URL + mShopList.get(position).getImage())
+                .resize(100, 80)
                 .into(holder.mMainImageView);
-        holder.mGradeTextView.setText(new DecimalFormat("#.##").format(shopList.get(position).getReview().getGrade()));
-        holder.mReviewTextView.setText("" + shopList.get(position).getReview().getCount());
-        holder.mNameTextView.setText(shopList.get(position).getName());
-        holder.mAddressTextView.setText(shopList.get(position).getAddress());
+        holder.mGradeTextView.setText(new DecimalFormat("#.##").format(mShopList.get(position).getReview().getGrade()));
+        holder.mReviewTextView.setText("" + mShopList.get(position).getReview().getCount());
+        holder.mNameTextView.setText(mShopList.get(position).getName());
+        holder.mAddressTextView.setText(mShopList.get(position).getAddress());
 
         return convertView;
     }
 
-    class ViewHolder {
+    public static class sShopViewHolder {
         @Bind(R.id.row_shop_list_iv_profile)    ImageView mMainImageView;
         @Bind(R.id.row_shop_list_tv_grade)      TextView mGradeTextView;
         @Bind(R.id.row_shop_list_tv_review)     TextView mReviewTextView;
         @Bind(R.id.row_shop_list_tv_name)       TextView mNameTextView;
         @Bind(R.id.row_shop_list_tv_address)    TextView mAddressTextView;
 
-        public ViewHolder(View view) {
+        public sShopViewHolder(View view) {
             ButterKnife.bind(this, view);
         }
     }

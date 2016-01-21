@@ -5,7 +5,7 @@ package kr.co.hairtouch.hairtouch_android.model;
  */
 public class Review {
     int id;
-    MemberInfo member;
+    ReviewMember member;
     String created_at;
     String detail;
     String image;
@@ -15,7 +15,7 @@ public class Review {
         return id;
     }
 
-    public MemberInfo getMember() {
+    public ReviewMember getMember() {
         return member;
     }
 

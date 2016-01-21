@@ -8,8 +8,11 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -21,6 +24,7 @@ import kr.co.hairtouch.hairtouch_android.apimanager.ServiceGenerator;
 import kr.co.hairtouch.hairtouch_android.apimanager.ShopService;
 import kr.co.hairtouch.hairtouch_android.model.Shop;
 import kr.co.hairtouch.hairtouch_android.recyclerview.DividerItemDecoration;
+import kr.co.hairtouch.hairtouch_android.util.Constants;
 import retrofit.Call;
 import retrofit.Callback;
 import retrofit.Response;
@@ -28,8 +32,8 @@ import retrofit.Retrofit;
 
 public class ShopDetailActivity extends AppCompatActivity {
 
-    private int id;
-    private Shop shop;
+    private int mShopId;
+    private Shop mShop;
 
     @OnClick({R.id.activity_shop_detail_btn_shop, R.id.activity_shop_detail_btn_designer, R.id.activity_shop_detail_btn_review})
     public void onClick(View v) {
@@ -57,6 +61,7 @@ public class ShopDetailActivity extends AppCompatActivity {
     @Bind(R.id.activity_shop_detail_rv_designer) RecyclerView designerRecyclerView;
     @Bind(R.id.activity_shop_detail_rv_review) RecyclerView reviewRecyclerView;
     @Bind(R.id.emptyView) TextView shopInfoTextView;
+    @Bind(R.id.backgroundImageView) ImageView shopImageView;
     @Bind(R.id.toolbar) Toolbar toolBar;
     @Bind(R.id.collapsingToolbarLayout) CollapsingToolbarLayout collapsingToolbarLayout;
 
@@ -65,7 +70,7 @@ public class ShopDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop_detail);
 
-        id = getIntent().getExtras().getInt("id");
+        mShopId = getIntent().getExtras().getInt(Constants.EXTRA_SHOP_ID);
 
         ButterKnife.bind(this);
 
@@ -74,10 +79,10 @@ public class ShopDetailActivity extends AppCompatActivity {
 
         // create service
         ShopService shopService = ServiceGenerator.createService(ShopService.class);
-        Call<Shop> call = shopService.loadShop(id);
+        Call<Shop> call = shopService.loadShop(mShopId);
 
         // asynchronous call
-        call.enqueue(callback);
+        call.enqueue(mCallback);
     }
 
     @Override
@@ -96,18 +101,23 @@ public class ShopDetailActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    Callback<Shop> callback = new Callback<Shop>() {
+    private Callback<Shop> mCallback = new Callback<Shop>() {
         @Override
         public void onResponse(Response<Shop> response, Retrofit retrofit) {
-            shop = response.body();
+            mShop = response.body();
 
-            collapsingToolbarLayout.setTitle(shop.getName());
+            collapsingToolbarLayout.setTitle(mShop.getName());
+
+            Picasso.with(ShopDetailActivity.this)
+                    .load(Constants.API_SERVER_BASE_URL + mShop.getImage())
+                    .placeholder(R.drawable.ic_main_logo)
+                    .into(shopImageView);
 
             designerRecyclerView.setLayoutManager(new LinearLayoutManager(ShopDetailActivity.this));
-            designerRecyclerView.setAdapter(new DesignerListAdapter(ShopDetailActivity.this, shop.getDesigners()));
+            designerRecyclerView.setAdapter(new DesignerListAdapter(ShopDetailActivity.this, mShop.getDesigners()));
             designerRecyclerView.addItemDecoration(new DividerItemDecoration(ShopDetailActivity.this));
             reviewRecyclerView.setLayoutManager(new LinearLayoutManager(ShopDetailActivity.this));
-            reviewRecyclerView.setAdapter(new ReviewListAdapter(ShopDetailActivity.this, shop.getReviews()));
+            reviewRecyclerView.setAdapter(new ReviewListAdapter(ShopDetailActivity.this, mShop.getReviews()));
             reviewRecyclerView.addItemDecoration(new DividerItemDecoration(ShopDetailActivity.this));
         }
 

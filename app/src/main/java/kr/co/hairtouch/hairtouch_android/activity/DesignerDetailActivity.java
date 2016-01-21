@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -21,6 +20,7 @@ import kr.co.hairtouch.hairtouch_android.apimanager.DesignerService;
 import kr.co.hairtouch.hairtouch_android.apimanager.ServiceGenerator;
 import kr.co.hairtouch.hairtouch_android.model.Designer;
 import kr.co.hairtouch.hairtouch_android.recyclerview.DividerItemDecoration;
+import kr.co.hairtouch.hairtouch_android.util.Constants;
 import retrofit.Call;
 import retrofit.Callback;
 import retrofit.Response;
@@ -28,9 +28,8 @@ import retrofit.Retrofit;
 
 public class DesignerDetailActivity extends AppCompatActivity {
 
-    private int id;
-    private String name;
-    private Designer designer;
+    private int mDesignerId;
+    private Designer mDesigner;
 
     @OnClick({R.id.activity_designer_detail_btn_designer, R.id.activity_designer_detail_btn_hair, R.id.activity_designer_detail_btn_review})
     public void onClick(View v) {
@@ -66,7 +65,7 @@ public class DesignerDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_designer_detail);
 
-        id = getIntent().getExtras().getInt("id");
+        mDesignerId = getIntent().getExtras().getInt(Constants.EXTRA_DESIGNER_ID);
 
         ButterKnife.bind(this);
 
@@ -75,10 +74,10 @@ public class DesignerDetailActivity extends AppCompatActivity {
 
         // create service
         DesignerService designerService = ServiceGenerator.createService(DesignerService.class);
-        Call<Designer> call = designerService.loadDesigner(id);
+        Call<Designer> call = designerService.loadDesigner(mDesignerId);
 
         // asynchronous call
-        call.enqueue(callback);
+        call.enqueue(mCallback);
     }
 
     @Override
@@ -97,14 +96,14 @@ public class DesignerDetailActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    Callback<Designer> callback = new Callback<Designer>() {
+    private Callback<Designer> mCallback = new Callback<Designer>() {
         @Override
         public void onResponse(Response<Designer> response, Retrofit retrofit) {
-            designer = response.body();
+            mDesigner = response.body();
 
-            collapsingToolbarLayout.setTitle(designer.getName());
+            collapsingToolbarLayout.setTitle(mDesigner.getName());
             reviewRecyclerView.setLayoutManager(new LinearLayoutManager(DesignerDetailActivity.this));
-            reviewRecyclerView.setAdapter(new ReviewListAdapter(DesignerDetailActivity.this, designer.getReviews()));
+            reviewRecyclerView.setAdapter(new ReviewListAdapter(DesignerDetailActivity.this, mDesigner.getReviews()));
             reviewRecyclerView.addItemDecoration(new DividerItemDecoration(DesignerDetailActivity.this));
         }
 

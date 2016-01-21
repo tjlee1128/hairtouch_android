@@ -19,26 +19,26 @@ import kr.co.hairtouch.hairtouch_android.model.Review;
 /**
  * Created by leetaejun on 2016. 1. 20..
  */
-public class ReviewListAdapter extends RecyclerView.Adapter<ReviewListAdapter.ViewHolder> {
+public class ReviewListAdapter extends RecyclerView.Adapter<ReviewListAdapter.sReviewViewHolder> {
 
-    LayoutInflater mInflater;
-    List<Review> reviewList;
+    private LayoutInflater mInflater;
+    private List<Review> mReviewList;
 
     public ReviewListAdapter(Context context, List<Review> reviewList) {
         if (reviewList == null) throw new IllegalArgumentException("Data must not be null");
         mInflater = LayoutInflater.from(context);
-        this.reviewList = reviewList;
+        mReviewList = reviewList;
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public sReviewViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = mInflater.inflate(R.layout.row_review_list, parent, false);
-        return new ViewHolder(view);
+        return new sReviewViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        Review review = reviewList.get(position);
+    public void onBindViewHolder(sReviewViewHolder holder, int position) {
+        Review review = mReviewList.get(position);
         holder.mGradeTextView.setText(new DecimalFormat("#.##").format(review.getGrade()));
         holder.mNameTextView.setText(review.getMember().getMember_name());
         holder.mDetailTextView.setText(review.getDetail());
@@ -46,15 +46,15 @@ public class ReviewListAdapter extends RecyclerView.Adapter<ReviewListAdapter.Vi
 
     @Override
     public int getItemCount() {
-        return reviewList.size();
+        return mReviewList.size();
     }
 
-    public final static class ViewHolder extends RecyclerView.ViewHolder {
+    public static class sReviewViewHolder extends RecyclerView.ViewHolder {
         @Bind(R.id.row_review_list_iv_profile)      ImageView mMainImageView;
         @Bind(R.id.row_review_list_tv_grade)        TextView mGradeTextView;
         @Bind(R.id.row_review_list_tv_name)         TextView mNameTextView;
         @Bind(R.id.row_review_list_tv_detail)       TextView mDetailTextView;
-        public ViewHolder(View itemView) {
+        public sReviewViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
