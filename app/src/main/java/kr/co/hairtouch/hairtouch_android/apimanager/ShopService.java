@@ -11,9 +11,9 @@ import retrofit.http.Path;
  * Created by leetaejun on 2016. 1. 20..
  */
 public interface ShopService {
-    @GET("shops.json")
+    @GET("/shops.json")
     Call<List<Shop>> loadShops();
 
-    @GET("shops/{id}.json")
+    @GET("/shops/{id}.json")
     Call<Shop> loadShop(@Path("id") int id);
 }

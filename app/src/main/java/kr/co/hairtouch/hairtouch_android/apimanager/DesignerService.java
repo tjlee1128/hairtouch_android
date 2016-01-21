@@ -11,9 +11,9 @@ import retrofit.http.Path;
  * Created by leetaejun on 2016. 1. 20..
  */
 public interface DesignerService {
-    @GET("designers.json")
+    @GET("/designers.json")
     Call<List<Designer>> loadDesigners();
 
-    @GET("designers/{id}.json")
+    @GET("/designers/{id}.json")
     Call<Designer> loadDesigner(@Path("id") int id);
 }

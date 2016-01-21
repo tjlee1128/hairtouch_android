@@ -9,6 +9,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.text.DecimalFormat;
 import java.util.List;
 
@@ -16,16 +18,19 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import kr.co.hairtouch.hairtouch_android.R;
 import kr.co.hairtouch.hairtouch_android.model.Shop;
+import kr.co.hairtouch.hairtouch_android.util.Constants;
 
 /**
  * Created by leetaejun on 2016. 1. 19..
  */
 public class ShopListAdapter extends BaseAdapter {
 
+    private Context mContext;
     private LayoutInflater mInflater;
     private List<Shop> shopList;
 
     public ShopListAdapter(Context context, List<Shop> shopList) {
+        this.mContext = context;
         mInflater = LayoutInflater.from(context);
         this.shopList = shopList;
     }
@@ -56,6 +61,10 @@ public class ShopListAdapter extends BaseAdapter {
             convertView.setTag(holder);
         }
 
+        Picasso.with(mContext)
+                .load(Constants.API_SERVER_BASE_URL + shopList.get(position).getImage())
+                .resize(50, 50)
+                .into(holder.mMainImageView);
         holder.mGradeTextView.setText(new DecimalFormat("#.##").format(shopList.get(position).getReview().getGrade()));
         holder.mReviewTextView.setText("" + shopList.get(position).getReview().getCount());
         holder.mNameTextView.setText(shopList.get(position).getName());
