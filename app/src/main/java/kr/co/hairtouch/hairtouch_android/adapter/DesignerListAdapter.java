@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.text.DecimalFormat;
 import java.util.List;
 
@@ -15,17 +17,20 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import kr.co.hairtouch.hairtouch_android.R;
 import kr.co.hairtouch.hairtouch_android.model.Designer;
+import kr.co.hairtouch.hairtouch_android.util.Constants;
 
 /**
  * Created by leetaejun on 2016. 1. 20..
  */
 public class DesignerListAdapter extends RecyclerView.Adapter<DesignerListAdapter.sDesignerViewHolder> {
 
+    private Context mContext;
     private LayoutInflater mInflater;
     private List<Designer> mDesignerList;
 
     public DesignerListAdapter(Context context, List<Designer> designerList) {
-        if (designerList == null) throw  new IllegalArgumentException("Data must not be null");
+        if (designerList == null) throw new IllegalArgumentException("Data must not be null");
+        mContext = context;
         mInflater = LayoutInflater.from(context);
         mDesignerList = designerList;
     }
@@ -39,6 +44,11 @@ public class DesignerListAdapter extends RecyclerView.Adapter<DesignerListAdapte
     @Override
     public void onBindViewHolder(sDesignerViewHolder holder, int position) {
         Designer designer = mDesignerList.get(position);
+
+        Picasso.with(mContext)
+                .load(Constants.API_SERVER_BASE_URL + mDesignerList.get(position).getImage())
+                .resize(75, 75)
+                .into(holder.mMainImageView);
         holder.mGradeTextView.setText(new DecimalFormat("#.##").format(designer.getReview().getGrade()));
         holder.mReviewTextView.setText("" + designer.getReview().getCount());
         holder.mNameTextView.setText(designer.getName());

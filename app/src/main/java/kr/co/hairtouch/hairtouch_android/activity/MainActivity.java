@@ -27,7 +27,8 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.activity_main_btn_hair:
-                Toast.makeText(MainActivity.this, "hair", Toast.LENGTH_LONG).show();
+                intent = new Intent(MainActivity.this, HairActivity.class);
+                startActivity(intent);
                 break;
 
             case R.id.activity_main_btn_mypage:

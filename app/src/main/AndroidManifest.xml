@@ -35,6 +35,10 @@
         <activity
             android:name=".activity.DesignerDetailActivity"
             android:label="@string/title_activity_designer_detail"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.HairActivity"
+            android:label="@string/title_activity_hair"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

@@ -13,6 +13,7 @@ public class Designer {
     String end_time;
     int reservation_type;
     String main_image;
+    String image;
 
     ReviewTotal review;
     List<Review> reviews;
@@ -43,6 +44,10 @@ public class Designer {
 
     public String getMain_image() {
         return main_image;
+    }
+
+    public String getImage() {
+        return image;
     }
 
     public ReviewTotal getReview() {
