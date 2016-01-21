@@ -12,6 +12,7 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import kr.co.hairtouch.hairtouch_android.R;
 import kr.co.hairtouch.hairtouch_android.adapter.ShopListAdapter;
 import kr.co.hairtouch.hairtouch_android.apimanager.ServiceGenerator;
@@ -27,6 +28,18 @@ public class ShopActivity extends AppCompatActivity {
 
     @Bind(R.id.activity_shop_lv) ListView shopListView;
     private List<Shop> mShopList;
+
+    @OnClick(R.id.activity_shop_rl_back)
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.activity_shop_rl_back:
+                onBackPressed();
+                break;
+
+            default:
+                break;
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

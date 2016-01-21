@@ -12,6 +12,7 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import kr.co.hairtouch.hairtouch_android.R;
 import kr.co.hairtouch.hairtouch_android.adapter.DesignerListAdapter;
 import kr.co.hairtouch.hairtouch_android.apimanager.DesignerService;
@@ -29,6 +30,18 @@ public class DesignerActivity extends AppCompatActivity {
 
     @Bind(R.id.activity_designer_rv) RecyclerView designerRecyclerView;
     private List<Designer> mDesignerList;
+
+    @OnClick(R.id.activity_designer_rl_back)
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.activity_designer_rl_back:
+                onBackPressed();
+                break;
+
+            default:
+                break;
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
