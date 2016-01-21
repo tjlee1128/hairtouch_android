@@ -14,6 +14,7 @@ public class Shop {
     String holiday;
     String address;
     String main_image;
+    String image;
     ReviewTotal review;
 
     List<Designer> designers;
@@ -45,6 +46,10 @@ public class Shop {
 
     public String getAddress() {
         return address;
+    }
+
+    public String getImage() {
+        return image;
     }
 
     public String getMain_image() {
