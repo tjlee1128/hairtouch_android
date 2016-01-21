@@ -1,11 +1,13 @@
 package kr.co.hairtouch.hairtouch_android.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
 
 import java.util.List;
@@ -18,6 +20,7 @@ import kr.co.hairtouch.hairtouch_android.adapter.HairGridAdapter;
 import kr.co.hairtouch.hairtouch_android.apimanager.HairService;
 import kr.co.hairtouch.hairtouch_android.apimanager.ServiceGenerator;
 import kr.co.hairtouch.hairtouch_android.model.Hair;
+import kr.co.hairtouch.hairtouch_android.util.Constants;
 import retrofit.Call;
 import retrofit.Callback;
 import retrofit.Response;
@@ -67,6 +70,14 @@ public class HairActivity extends AppCompatActivity {
             mHairList = response.body();
 
             hairGridView.setAdapter(new HairGridAdapter(HairActivity.this, mHairList));
+            hairGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Intent intent = new Intent(HairActivity.this, HairDetailActivity.class);
+                    intent.putExtra(Constants.EXTRA_HAIR_ID, mHairList.get(position).getId());
+                    startActivity(intent);
+                }
+            });
         }
 
         @Override

@@ -42,7 +42,7 @@
             android:padding="12dp"
             android:numColumns="auto_fit"
             android:stretchMode="columnWidth"
-            android:verticalSpacing="4dp"
+            android:verticalSpacing="8dp"
             android:scrollbars="none"
             android:background="@color/colorWhite">
         </GridView>

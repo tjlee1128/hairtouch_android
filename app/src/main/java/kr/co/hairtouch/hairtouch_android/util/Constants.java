@@ -20,6 +20,7 @@ public class Constants {
     // Intent Extra => EXTRA_
     public final static String EXTRA_SHOP_ID = "kr.co.hairtouch.hairtouch_android.activity.EXTRA_SHOP_ID";
     public final static String EXTRA_DESIGNER_ID = "kr.co.hairtouch.hairtouch_android.activity.EXTRA_DESIGNER_ID";
+    public final static String EXTRA_HAIR_ID = "kr.co.hairtouch.hairtouch_android.activity.EXTRA_HAIR_ID";
 
 
     // Intent Action => ACTION_
