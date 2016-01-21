@@ -1,5 +1,6 @@
 package kr.co.hairtouch.hairtouch_android.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -60,7 +61,10 @@ public class DesignerActivity extends AppCompatActivity {
             designerRecyclerView.addOnItemTouchListener(new RecyclerItemClickListener(DesignerActivity.this, new RecyclerItemClickListener.OnItemClickListener(){
                 @Override
                 public void onItemClick(View view, int position) {
-                    Toast.makeText(DesignerActivity.this, "" + position, Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(DesignerActivity.this, DesignerDetailActivity.class);
+                    intent.putExtra("id", designerList.get(position).getId());
+//                    intent.putExtra("name", designerList.get(position).getName());
+                    startActivity(intent);
                 }
             }));
         }

@@ -4,4 +4,5 @@
     <string name="title_activity_shop">ShopActivity</string>
     <string name="title_activity_shop_detail">ShopDetailActivity</string>
     <string name="title_activity_designer">DesignerActivity</string>
+    <string name="title_activity_designer_detail">DesignerDetailActivity</string>
 </resources>
