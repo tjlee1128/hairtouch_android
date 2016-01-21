@@ -28,7 +28,7 @@ import retrofit.Callback;
 import retrofit.Response;
 import retrofit.Retrofit;
 
-public class HairDetailActivity extends AppCompatActivity {
+public class HairDetailActivity extends HTActivity {
 
     private int mHairId;
     private Hair mHair;
@@ -51,7 +51,6 @@ public class HairDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.overridePendingTransition(R.anim.start_right_left_enter, R.anim.start_right_left_exit);
         setContentView(R.layout.activity_hair_detail);
 
         mHairId = getIntent().getExtras().getInt(Constants.EXTRA_HAIR_ID);
@@ -70,12 +69,6 @@ public class HairDetailActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         ButterKnife.unbind(this);
-    }
-
-    @Override
-    public void finish() {
-        super.finish();
-        this.overridePendingTransition(R.anim.end_right_left_enter, R.anim.end_right_left_exit);
     }
 
     private Callback<Hair> mCallback = new Callback<Hair>() {

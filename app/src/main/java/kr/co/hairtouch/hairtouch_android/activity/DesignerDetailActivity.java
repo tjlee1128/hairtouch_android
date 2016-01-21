@@ -27,7 +27,7 @@ import retrofit.Callback;
 import retrofit.Response;
 import retrofit.Retrofit;
 
-public class DesignerDetailActivity extends AppCompatActivity {
+public class DesignerDetailActivity extends HTActivity {
 
     private int mDesignerId;
     private Designer mDesigner;
@@ -64,7 +64,6 @@ public class DesignerDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.overridePendingTransition(R.anim.start_right_left_enter, R.anim.start_right_left_exit);
         setContentView(R.layout.activity_designer_detail);
 
         mDesignerId = getIntent().getExtras().getInt(Constants.EXTRA_DESIGNER_ID);
@@ -86,12 +85,6 @@ public class DesignerDetailActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         ButterKnife.unbind(this);
-    }
-
-    @Override
-    public void finish() {
-        super.finish();
-        this.overridePendingTransition(R.anim.end_right_left_enter, R.anim.end_right_left_exit);
     }
 
     @Override

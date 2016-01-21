@@ -32,7 +32,8 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.activity_main_btn_mypage:
-                Toast.makeText(MainActivity.this, "mypage", Toast.LENGTH_LONG).show();
+                intent = new Intent(MainActivity.this, MyPageActivity.class);
+                startActivity(intent);
                 break;
 
             default:

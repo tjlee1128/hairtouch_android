@@ -26,7 +26,7 @@ import retrofit.Callback;
 import retrofit.Response;
 import retrofit.Retrofit;
 
-public class DesignerActivity extends AppCompatActivity {
+public class DesignerActivity extends HTActivity {
 
     @Bind(R.id.activity_designer_rv) RecyclerView designerRecyclerView;
     private List<Designer> mDesignerList;
@@ -46,7 +46,6 @@ public class DesignerActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.overridePendingTransition(R.anim.start_right_left_enter, R.anim.start_right_left_exit);
         setContentView(R.layout.activity_designer);
 
         ButterKnife.bind(this);
@@ -63,12 +62,6 @@ public class DesignerActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         ButterKnife.unbind(this);
-    }
-
-    @Override
-    public void finish() {
-        super.finish();
-        this.overridePendingTransition(R.anim.end_right_left_enter, R.anim.end_right_left_exit);
     }
 
     private Callback<List<Designer>> mCallback = new Callback<List<Designer>>() {

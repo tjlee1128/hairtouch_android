@@ -30,7 +30,7 @@ import retrofit.Callback;
 import retrofit.Response;
 import retrofit.Retrofit;
 
-public class ShopDetailActivity extends AppCompatActivity {
+public class ShopDetailActivity extends HTActivity {
 
     private int mShopId;
     private Shop mShop;
@@ -68,7 +68,6 @@ public class ShopDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.overridePendingTransition(R.anim.start_right_left_enter, R.anim.start_right_left_exit);
         setContentView(R.layout.activity_shop_detail);
 
         mShopId = getIntent().getExtras().getInt(Constants.EXTRA_SHOP_ID);
@@ -90,12 +89,6 @@ public class ShopDetailActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         ButterKnife.unbind(this);
-    }
-
-    @Override
-    public void finish() {
-        super.finish();
-        this.overridePendingTransition(R.anim.end_right_left_enter, R.anim.end_right_left_exit);
     }
 
     @Override

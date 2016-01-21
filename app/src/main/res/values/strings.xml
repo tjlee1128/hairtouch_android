@@ -7,4 +7,5 @@
     <string name="title_activity_designer_detail">DesignerDetailActivity</string>
     <string name="title_activity_hair">HairActivity</string>
     <string name="title_activity_hair_detail">HairDetailActivity</string>
+    <string name="title_activity_my_page">MyPageActivity</string>
 </resources>

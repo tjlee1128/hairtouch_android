@@ -24,7 +24,7 @@ import retrofit.Callback;
 import retrofit.Response;
 import retrofit.Retrofit;
 
-public class ShopActivity extends AppCompatActivity {
+public class ShopActivity extends HTActivity {
 
     @Bind(R.id.activity_shop_lv) ListView shopListView;
     private List<Shop> mShopList;
@@ -44,7 +44,6 @@ public class ShopActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.overridePendingTransition(R.anim.start_right_left_enter, R.anim.start_right_left_exit);
         setContentView(R.layout.activity_shop);
 
         ButterKnife.bind(this);
@@ -66,7 +65,6 @@ public class ShopActivity extends AppCompatActivity {
     @Override
     public void finish() {
         super.finish();
-        this.overridePendingTransition(R.anim.end_right_left_enter, R.anim.end_right_left_exit);
     }
 
     // create interface
