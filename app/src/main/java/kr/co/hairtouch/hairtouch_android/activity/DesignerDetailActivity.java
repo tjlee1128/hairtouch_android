@@ -14,6 +14,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import kr.co.hairtouch.hairtouch_android.R;
+import kr.co.hairtouch.hairtouch_android.adapter.HairListAdapter;
 import kr.co.hairtouch.hairtouch_android.adapter.ReviewListAdapter;
 import kr.co.hairtouch.hairtouch_android.apimanager.DesignerService;
 import kr.co.hairtouch.hairtouch_android.apimanager.ServiceGenerator;
@@ -101,6 +102,9 @@ public class DesignerDetailActivity extends HTLRActivity {
             mDesigner = response.body();
 
             collapsingToolbarLayout.setTitle(mDesigner.getName());
+            hairRecyclerView.setLayoutManager(new LinearLayoutManager(DesignerDetailActivity.this));
+            hairRecyclerView.setAdapter(new HairListAdapter(DesignerDetailActivity.this, mDesigner.getHairs()));
+            hairRecyclerView.addItemDecoration(new DividerItemDecoration(DesignerDetailActivity.this));
             reviewRecyclerView.setLayoutManager(new LinearLayoutManager(DesignerDetailActivity.this));
             reviewRecyclerView.setAdapter(new ReviewListAdapter(DesignerDetailActivity.this, mDesigner.getReviews()));
             reviewRecyclerView.addItemDecoration(new DividerItemDecoration(DesignerDetailActivity.this));

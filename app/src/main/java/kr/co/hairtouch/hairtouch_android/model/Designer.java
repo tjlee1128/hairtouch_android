@@ -16,6 +16,7 @@ public class Designer {
     String image;
 
     ReviewTotal review;
+    List<Hair> hairs;
     List<Review> reviews;
 
     public int getId() {
@@ -52,6 +53,10 @@ public class Designer {
 
     public ReviewTotal getReview() {
         return review;
+    }
+
+    public List<Hair> getHairs() {
+        return hairs;
     }
 
     public List<Review> getReviews() {
