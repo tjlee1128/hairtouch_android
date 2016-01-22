@@ -1,5 +1,7 @@
 package kr.co.hairtouch.hairtouch_android.fragment;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -51,7 +53,6 @@ public class HairCategoryFragment extends Fragment {
         }
     }
 
-    @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_hair_category, container, false);
@@ -64,7 +65,7 @@ public class HairCategoryFragment extends Fragment {
         if (mIndex == 0) {
             call = hairCategoryService.loadHairCategoryCodes();
         } else {
-            call = hairCategoryService.loadHairCategoryes(getArguments().getInt(Constants.ARGUMENT_CATEGORY_CODE));
+            call = hairCategoryService.loadHairCategoryes(getArguments().getInt(Constants.ARGUMENT_CATEGORY_CODE_ID));
         }
 
         // asynchronous call
@@ -86,7 +87,7 @@ public class HairCategoryFragment extends Fragment {
                     Bundle args = new Bundle();
                     args.putInt(Constants.ARGUMENT_INDEX, nextIndex);
                     if (mIndex == 0) {
-                        args.putInt(Constants.ARGUMENT_CATEGORY_CODE, mHairCategoryList.get(position).getId());
+                        args.putInt(Constants.ARGUMENT_CATEGORY_CODE_ID, mHairCategoryList.get(position).getId());
                         HairCategoryFragment hairCategoryFragment = new HairCategoryFragment();
                         hairCategoryFragment.setArguments(args);
 
@@ -95,8 +96,13 @@ public class HairCategoryFragment extends Fragment {
                         ft.addToBackStack(nextIndex < 2 ? "" + nextIndex : "2");
                         ft.commit();
                     } else {
-                        mSelectedCategoryId = mHairCategoryList.get(position).getId();
-                        mSelectedCategoryCodeId = mHairCategoryList.get(position).getHaircategorycode_id();
+                        args.clear();
+                        args.putInt(Constants.ARGUMENT_CATEGORY_ID, mHairCategoryList.get(position).getId());
+                        args.putInt(Constants.ARGUMENT_CATEGORY_CODE_ID, mHairCategoryList.get(position).getHaircategorycode_id());
+                        Intent intent = new Intent();
+                        intent.putExtras(args);
+                        getActivity().setResult(Activity.RESULT_OK, intent);
+                        getActivity().finish();
                     }
                 }
             });

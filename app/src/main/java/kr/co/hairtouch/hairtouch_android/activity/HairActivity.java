@@ -2,6 +2,7 @@ package kr.co.hairtouch.hairtouch_android.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
@@ -24,6 +25,8 @@ import retrofit.Retrofit;
 
 public class HairActivity extends HTLRActivity {
 
+    private static final int REQUEST_CODE_HAIR_CATEGORY = 1;
+
     @Bind(R.id.activity_hair_gv) GridView hairGridView;
     private List<Hair> mHairList;
 
@@ -37,7 +40,7 @@ public class HairActivity extends HTLRActivity {
 
             case R.id.activity_hair_rl_title:
                 intent = new Intent(HairActivity.this, HairCategoryActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent, REQUEST_CODE_HAIR_CATEGORY);
                 break;
 
             default:
@@ -54,7 +57,7 @@ public class HairActivity extends HTLRActivity {
 
         // create service
         HairService hairService = ServiceGenerator.createService(HairService.class);
-        Call<List<Hair>> call = hairService.loadHairs();
+        Call<List<Hair>> call = hairService.loadHairs(null);
 
         // asynchronous call
         call.enqueue(mCallback);
@@ -64,6 +67,29 @@ public class HairActivity extends HTLRActivity {
     protected void onDestroy() {
         super.onDestroy();
         ButterKnife.unbind(this);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode) {
+            case REQUEST_CODE_HAIR_CATEGORY:
+                if (resultCode == RESULT_OK) {
+                    Log.i("test", "HAIR_CATEGORY_CODE_ID : " + data.getExtras().getInt(Constants.ARGUMENT_CATEGORY_CODE_ID) + ", HAIR_CATEGORY_ID : " + data.getExtras().getInt(Constants.ARGUMENT_CATEGORY_ID));
+
+                    // create service
+                    HairService hairService = ServiceGenerator.createService(HairService.class);
+                    Call<List<Hair>> call = hairService.loadHairs(data.getExtras().getInt(Constants.ARGUMENT_CATEGORY_ID));
+
+                    // asynchronous call
+                    call.enqueue(mCallback);
+                }
+                break;
+
+            default:
+                break;
+        }
+
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     private Callback<List<Hair>> mCallback = new Callback<List<Hair>>() {
