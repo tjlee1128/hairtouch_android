@@ -32,10 +32,11 @@
     </RelativeLayout>
 
     <FrameLayout
-        android:id="@+id/fragment_container"
+        android:id="@+id/fragment_hair_category_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorWhite"
-        android:layout_below="@+id/activity_hair_category_rl_toolbar"/>
+        android:layout_below="@+id/activity_hair_category_rl_toolbar"
+        tools:layout ="@layout/fragment_hair_category_first"/>
 
 </RelativeLayout>
