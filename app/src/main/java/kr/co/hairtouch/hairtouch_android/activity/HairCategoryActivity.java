@@ -8,7 +8,7 @@ import android.view.View;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import kr.co.hairtouch.hairtouch_android.R;
-import kr.co.hairtouch.hairtouch_android.fragment.HairCategoryFirstFragment;
+import kr.co.hairtouch.hairtouch_android.fragment.HairCategoryFragment;
 import kr.co.hairtouch.hairtouch_android.util.Constants;
 
 public class HairCategoryActivity extends HTTBActivity {
@@ -35,11 +35,11 @@ public class HairCategoryActivity extends HTTBActivity {
         Bundle args = new Bundle();
         args.putInt(Constants.ARGUMENT_INDEX, 0);
 
-        HairCategoryFirstFragment hairCategoryFirstFragment = new HairCategoryFirstFragment();
-        hairCategoryFirstFragment.setArguments(args);
+        HairCategoryFragment hairCategoryFragment = new HairCategoryFragment();
+        hairCategoryFragment.setArguments(args);
 
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.fragment_hair_category_container, hairCategoryFirstFragment, "first");
+        ft.replace(R.id.fragment_hair_category_container, hairCategoryFragment, "Fragment0");
         ft.commit();
     }
 

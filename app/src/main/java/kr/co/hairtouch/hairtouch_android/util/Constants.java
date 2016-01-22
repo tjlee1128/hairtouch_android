@@ -16,6 +16,7 @@ public class Constants {
 
     // Fragment argument => ARGUMENT_
     public static final String ARGUMENT_INDEX = "ARGUMENT_INDEX";
+    public static final String ARGUMENT_CATEGORY_CODE = "ARGUMENT_CATEGORY_CODE";
 
     // Intent Extra => EXTRA_
     public final static String EXTRA_SHOP_ID = "kr.co.hairtouch.hairtouch_android.activity.EXTRA_SHOP_ID";
