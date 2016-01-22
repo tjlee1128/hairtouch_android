@@ -7,8 +7,11 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -56,6 +59,7 @@ public class DesignerDetailActivity extends HTLRActivity {
 
     @Bind(R.id.activity_designer_detail_rv_hair) RecyclerView hairRecyclerView;
     @Bind(R.id.activity_designer_detail_rv_review) RecyclerView reviewRecyclerView;
+    @Bind(R.id.backgroundImageView) ImageView designerImageView;
     @Bind(R.id.emptyView) TextView designerInfoTextView;
     @Bind(R.id.toolbar) Toolbar toolBar;
     @Bind(R.id.collapsingToolbarLayout) CollapsingToolbarLayout collapsingToolbarLayout;
@@ -100,6 +104,10 @@ public class DesignerDetailActivity extends HTLRActivity {
         @Override
         public void onResponse(Response<Designer> response, Retrofit retrofit) {
             mDesigner = response.body();
+
+            Picasso.with(DesignerDetailActivity.this)
+                    .load(Constants.API_SERVER_BASE_URL + mDesigner.getImage())
+                    .into(designerImageView);
 
             collapsingToolbarLayout.setTitle(mDesigner.getName());
             hairRecyclerView.setLayoutManager(new LinearLayoutManager(DesignerDetailActivity.this));
