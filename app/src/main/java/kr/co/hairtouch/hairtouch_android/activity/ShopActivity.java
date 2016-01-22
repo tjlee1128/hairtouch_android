@@ -2,7 +2,6 @@ package kr.co.hairtouch.hairtouch_android.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -24,7 +23,7 @@ import retrofit.Callback;
 import retrofit.Response;
 import retrofit.Retrofit;
 
-public class ShopActivity extends HTActivity {
+public class ShopActivity extends HTLRActivity {
 
     @Bind(R.id.activity_shop_lv) ListView shopListView;
     private List<Shop> mShopList;

@@ -1,8 +1,8 @@
 package kr.co.hairtouch.hairtouch_android.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -24,13 +24,14 @@ import kr.co.hairtouch.hairtouch_android.apimanager.ServiceGenerator;
 import kr.co.hairtouch.hairtouch_android.apimanager.ShopService;
 import kr.co.hairtouch.hairtouch_android.model.Shop;
 import kr.co.hairtouch.hairtouch_android.recyclerview.DividerItemDecoration;
+import kr.co.hairtouch.hairtouch_android.recyclerview.RecyclerItemClickListener;
 import kr.co.hairtouch.hairtouch_android.util.Constants;
 import retrofit.Call;
 import retrofit.Callback;
 import retrofit.Response;
 import retrofit.Retrofit;
 
-public class ShopDetailActivity extends HTActivity {
+public class ShopDetailActivity extends HTLRActivity {
 
     private int mShopId;
     private Shop mShop;
@@ -116,6 +117,14 @@ public class ShopDetailActivity extends HTActivity {
             designerRecyclerView.setLayoutManager(new LinearLayoutManager(ShopDetailActivity.this));
             designerRecyclerView.setAdapter(new DesignerListAdapter(ShopDetailActivity.this, mShop.getDesigners()));
             designerRecyclerView.addItemDecoration(new DividerItemDecoration(ShopDetailActivity.this));
+            designerRecyclerView.addOnItemTouchListener(new RecyclerItemClickListener(ShopDetailActivity.this, new RecyclerItemClickListener.OnItemClickListener() {
+                @Override
+                public void onItemClick(View view, int position) {
+                    Intent intent = new Intent(ShopDetailActivity.this, DesignerDetailActivity.class);
+                    intent.putExtra(Constants.EXTRA_DESIGNER_ID, mShop.getDesigners().get(position).getId());
+                    startActivity(intent);
+                }
+            }));
             reviewRecyclerView.setLayoutManager(new LinearLayoutManager(ShopDetailActivity.this));
             reviewRecyclerView.setAdapter(new ReviewListAdapter(ShopDetailActivity.this, mShop.getReviews()));
             reviewRecyclerView.addItemDecoration(new DividerItemDecoration(ShopDetailActivity.this));

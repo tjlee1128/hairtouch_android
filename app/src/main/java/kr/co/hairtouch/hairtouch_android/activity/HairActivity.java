@@ -2,10 +2,6 @@ package kr.co.hairtouch.hairtouch_android.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
@@ -26,16 +22,22 @@ import retrofit.Callback;
 import retrofit.Response;
 import retrofit.Retrofit;
 
-public class HairActivity extends HTActivity {
+public class HairActivity extends HTLRActivity {
 
     @Bind(R.id.activity_hair_gv) GridView hairGridView;
     private List<Hair> mHairList;
 
-    @OnClick(R.id.activity_hair_rl_back)
+    @OnClick({R.id.activity_hair_rl_back, R.id.activity_hair_rl_title})
     public void onClick(View v) {
+        Intent intent;
         switch (v.getId()) {
             case R.id.activity_hair_rl_back:
                 onBackPressed();
+                break;
+
+            case R.id.activity_hair_rl_title:
+                intent = new Intent(HairActivity.this, HairCategoryActivity.class);
+                startActivity(intent);
                 break;
 
             default:

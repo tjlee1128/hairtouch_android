@@ -2,7 +2,6 @@ package kr.co.hairtouch.hairtouch_android.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -26,7 +25,7 @@ import retrofit.Callback;
 import retrofit.Response;
 import retrofit.Retrofit;
 
-public class DesignerActivity extends HTActivity {
+public class DesignerActivity extends HTLRActivity {
 
     @Bind(R.id.activity_designer_rv) RecyclerView designerRecyclerView;
     private List<Designer> mDesignerList;

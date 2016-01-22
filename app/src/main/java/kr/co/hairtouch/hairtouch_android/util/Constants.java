@@ -6,7 +6,7 @@ package kr.co.hairtouch.hairtouch_android.util;
 public class Constants {
     // company ip : 10.10.0.162:3000
     // home ip : 192.168.0.8:3000
-    public final static String API_SERVER_BASE_URL = "http://192.168.0.8:3000";
+    public final static String API_SERVER_BASE_URL = "http://10.10.0.162:3000";
 
     // SharedPreferences => PREF_
 

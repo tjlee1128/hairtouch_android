@@ -47,6 +47,10 @@
         <activity
             android:name=".activity.MyPageActivity"
             android:label="@string/title_activity_my_page"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.HairCategoryActivity"
+            android:label="@string/title_activity_hair_category"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

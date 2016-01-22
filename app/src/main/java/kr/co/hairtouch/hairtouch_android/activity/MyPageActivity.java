@@ -1,16 +1,12 @@
 package kr.co.hairtouch.hairtouch_android.activity;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import butterknife.OnClick;
 import kr.co.hairtouch.hairtouch_android.R;
 
-public class MyPageActivity extends HTActivity {
+public class MyPageActivity extends HTLRActivity {
 
     @OnClick(R.id.activity_mypage_rl_back)
     public void onClick(View v) {

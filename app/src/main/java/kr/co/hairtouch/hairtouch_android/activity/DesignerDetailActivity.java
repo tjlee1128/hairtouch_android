@@ -2,13 +2,11 @@ package kr.co.hairtouch.hairtouch_android.activity;
 
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,7 +25,7 @@ import retrofit.Callback;
 import retrofit.Response;
 import retrofit.Retrofit;
 
-public class DesignerDetailActivity extends HTActivity {
+public class DesignerDetailActivity extends HTLRActivity {
 
     private int mDesignerId;
     private Designer mDesigner;

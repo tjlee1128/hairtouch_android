@@ -1,10 +1,6 @@
 package kr.co.hairtouch.hairtouch_android.activity;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
@@ -28,7 +24,7 @@ import retrofit.Callback;
 import retrofit.Response;
 import retrofit.Retrofit;
 
-public class HairDetailActivity extends HTActivity {
+public class HairDetailActivity extends HTLRActivity {
 
     private int mHairId;
     private Hair mHair;
