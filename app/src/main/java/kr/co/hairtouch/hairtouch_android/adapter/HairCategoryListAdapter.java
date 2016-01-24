@@ -17,32 +17,10 @@ import kr.co.hairtouch.hairtouch_android.model.HairCategory;
 /**
  * Created by leetaejun on 2016. 1. 22..
  */
-public class HairCategoryListAdapter extends BaseAdapter {
-
-    private Context mContext;
-    private LayoutInflater mInflater;
-    private List<HairCategory> mHairCategoryList;
+public class HairCategoryListAdapter extends HTBaseAdapter<HairCategory> {
 
     public HairCategoryListAdapter(Context context, List<HairCategory> hairCategoryList) {
-        if (hairCategoryList == null) throw new IllegalArgumentException("Data must not be null");
-        mContext = context;
-        mInflater = LayoutInflater.from(context);
-        mHairCategoryList = hairCategoryList;
-    }
-
-    @Override
-    public int getCount() {
-        return mHairCategoryList.size();
-    }
-
-    @Override
-    public Object getItem(int position) {
-        return mHairCategoryList.get(position);
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return position;
+        super(context, hairCategoryList);
     }
 
     @Override
@@ -56,7 +34,7 @@ public class HairCategoryListAdapter extends BaseAdapter {
             convertView.setTag(holder);
         }
 
-        holder.mNameTextView.setText(mHairCategoryList.get(position).getName().replace(",", " > "));
+        holder.mNameTextView.setText(mList.get(position).getName().replace(",", " > "));
 
         return convertView;
     }

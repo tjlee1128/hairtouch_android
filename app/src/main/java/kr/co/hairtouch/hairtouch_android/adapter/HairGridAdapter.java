@@ -21,32 +21,10 @@ import kr.co.hairtouch.hairtouch_android.util.Constants;
 /**
  * Created by leetaejun on 2016. 1. 22..
  */
-public class HairGridAdapter extends BaseAdapter {
-
-    private Context mContext;
-    private LayoutInflater mInflater;
-    private List<Hair> mHairList;
+public class HairGridAdapter extends HTBaseAdapter<Hair> {
 
     public HairGridAdapter(Context context, List<Hair> hairList) {
-        if (hairList == null) throw new IllegalArgumentException("Data must not be null");
-        mContext = context;
-        mInflater = LayoutInflater.from(context);
-        mHairList = hairList;
-    }
-
-    @Override
-    public int getCount() {
-        return mHairList.size();
-    }
-
-    @Override
-    public Object getItem(int position) {
-        return mHairList.get(position);
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return position;
+        super(context, hairList);
     }
 
     @Override
@@ -61,10 +39,10 @@ public class HairGridAdapter extends BaseAdapter {
         }
 
         Picasso.with(mContext)
-                .load(Constants.API_SERVER_BASE_URL + mHairList.get(position).getImages().get(0).getImage())
+                .load(Constants.API_SERVER_BASE_URL + mList.get(position).getImages().get(0).getImage())
                 .resize(160, 200)
                 .into(holder.mMainImageView);
-        holder.mNameTextView.setText(mHairList.get(position).getTitle());
+        holder.mNameTextView.setText(mList.get(position).getTitle());
 
         return convertView;
     }

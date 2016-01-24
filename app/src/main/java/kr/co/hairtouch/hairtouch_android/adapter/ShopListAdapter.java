@@ -1,10 +1,8 @@
 package kr.co.hairtouch.hairtouch_android.adapter;
 
 import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -22,30 +20,10 @@ import kr.co.hairtouch.hairtouch_android.util.Constants;
 /**
  * Created by leetaejun on 2016. 1. 19..
  */
-public class ShopListAdapter extends BaseAdapter {
-
-    private Context mContext;
-    private LayoutInflater mInflater;
-    private List<Shop> mShopList;
+public class ShopListAdapter extends HTBaseAdapter<Shop> {
 
     public ShopListAdapter(Context context, List<Shop> shopList) {
-        mContext = context;
-        mInflater = LayoutInflater.from(context);
-        mShopList = shopList;
-    }
-    @Override
-    public int getCount() {
-        return mShopList.size();
-    }
-
-    @Override
-    public Object getItem(int position) {
-        return mShopList.get(position);
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return position;
+        super(context, shopList);
     }
 
     @Override
@@ -61,13 +39,13 @@ public class ShopListAdapter extends BaseAdapter {
         }
 
         Picasso.with(mContext)
-                .load(Constants.API_SERVER_BASE_URL + mShopList.get(position).getImage())
+                .load(Constants.API_SERVER_BASE_URL + mList.get(position).getImage())
                 .resize(100, 80)
                 .into(holder.mMainImageView);
-        holder.mGradeTextView.setText(new DecimalFormat("#.##").format(mShopList.get(position).getReview().getGrade()));
-        holder.mReviewTextView.setText("" + mShopList.get(position).getReview().getCount());
-        holder.mNameTextView.setText(mShopList.get(position).getName());
-        holder.mAddressTextView.setText(mShopList.get(position).getAddress());
+        holder.mGradeTextView.setText(new DecimalFormat("#.##").format(mList.get(position).getReview().getGrade()));
+        holder.mReviewTextView.setText("" + mList.get(position).getReview().getCount());
+        holder.mNameTextView.setText(mList.get(position).getName());
+        holder.mAddressTextView.setText(mList.get(position).getAddress());
 
         return convertView;
     }
